@@ -1,0 +1,31 @@
+table {
+  border-collapse: collapse;
+  border: 1px solid darkslategray;
+}
+
+table tr,
+td,
+th {
+  border: 2px solid darkslateblue;
+}
+
+table td,
+th {
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+table th {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: darkslateblue
+}
+
+.header {
+  color: darkslateblue;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table-class {
+  border: 5px dotted hotpink
+}
