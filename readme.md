@@ -169,7 +169,7 @@ parent: '.gridview-container',
 parent: '#gridview-container',
 ```
 
-**titleTag** {string}
+**titleTag** {string|boolean}
 
 Here you set html tag for table title. `<h2>` is default. If you don't need table title, set it to `false`.
 

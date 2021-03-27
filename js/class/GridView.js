@@ -37,7 +37,7 @@ class GridView {
    * @param {string} _titleText - text for table title
    * @param {array} _titleClass - css classes for table title
    * @param {array} _tableClass - css classes for table
-   * @param {array} attribute - configuration for columns
+   * @param {object} attribute - configuration for columns
    * @param {array} data - main data for table
    */
 
@@ -47,9 +47,8 @@ class GridView {
     this._titleText = 'GridView table title';
     this._titleClass = [];
     this._tableClass = [];
-
-    this.attribute = [];
-    this.data = {};
+    this.attribute = {};
+    this.data = [];
   }
 
   /**
