@@ -3,7 +3,7 @@
 Текущая версия 0.1.
 
 Читать документацию на других языках:
-* EN - English - https://github.com/urcosmos/gridview.js/blob/master/README.md
+* EN - English - https://github.com/urcosmos/gridview.js/blob/master/readme.md
 
 ## Содержание
 * [Вступление](#вступление)
