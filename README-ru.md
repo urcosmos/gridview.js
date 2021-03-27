@@ -4,7 +4,6 @@
 
 Читать документацию на других языках:
 * EN - English - https://github.com/urcosmos/gridview.js/blob/master/readme.md
-
 ## Содержание
 * [Вступление](#вступление)
 * [Возможности](#возможности)
