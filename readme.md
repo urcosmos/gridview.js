@@ -1,102 +1,105 @@
 ﻿# GridView.js
-Класс для создания таблиц.
-Текущая версия 0.1.
+Class for creating tables
+Current version 0.1.
 
-## Содержание
-* [Вступление](#вступление)
-* [Возможности](#возможности)
-* [Документация](#документация)
-  * [Старт](#старт)
-  * [Входящие данные](#входящие-данные)
-  * [Конфигурация таблицы](#конфигурация-таблицы)
-* [Пример использования](#пример-использования)
-* [Обновления](#обновления)
-* [Лицензия](#лицензия)
+Read documentation in another languages:
+* RU - Русский - https://github.com/urcosmos/gridview.js/blob/master/README-ru.md
 
-### Вступление
-[Вернуться к содержанию][toc]
+## Content
+* [Introduction](#introduction)
+* [Capability](#capability)
+* [Documentation](#documentation)
+  * [Getting start](#getting-start)
+  * [Input data](#input-data)
+  * [Table configuration](#table-configuration)
+* [Example of use](#example-of-use)
+* [Update](#update)
+* [License](#license)
 
-GridView.js представляет собой класс для создания таблиц из массива данных.
-Файл является продолжением и изменением класса GridView Александра Лущенко в его курсе по ООП в JS (https://itgid.info/).
+## Introduction
+[Back to content][toc]
 
-### Возможности
-[Вернуться к содержанию][toc]
+GridView.js is a class for creating tables from array of data.
+This file is a continuation of Alexandr's Luschenko GridView class in his OOP JS course (https://itgid.info/).
 
-* Формировать таблицу из массива данных и задать ей стили css;
-* Добавить название таблицы и задать ему стили css;
-* Выводить данные в ячейку либо в виде чистого текста, либо в виде html;
-* Настроить функцию обработки значения ячейки.
+## Capability
+[Back to content][toc]
 
-### Документация
-[Вернуться к содержанию][toc]
+* Create table from data array and set css styles;
+* Add table title and set css style;
+* Set output style for cell like plain text or like html;
+* Set handler function for cell value.
 
-#### Старт
-[Вернуться к содержанию][toc]
+## Documentation
+[Back to content][toc]
 
-Для начала подключаем файл GridView.js к проекту. Можете воспользоваться минифицированной версией.
+### Getting start
+[Back to content][toc]
+
+First, link GridView.js to your project. You may use minified version.
 
 ```html
 <!-- index.html -->
 
 <script src="js/class/GridView.js"></script>
-<!-- или -->
+<!-- or -->
 <script src="js/class/GridView.min.js"></script>
 ```
 
-Затем в своем основном файле со скриптами необходимо создать объект класса GridView.
+Then create new instance of GridView in your scripts file..
 
 ```js
 // script.js
 
-// создаем объект
+// create object
 let gridView = new GridView();
 ```
 
-Далее задать конфигурации таблицы...
+Then set table configuration...
 
 ```js
 // script.js
 
-// конфигурация таблицы
+// table configuration
 const gridViewConfig = {
-  // перечень параметров конфигурации
+  // list of parameters
 };
 ```
 
-...и выполнить метод `.render()`, чтобы добавить таблицу на страницу.
+...and do `.render()` method for adding table to document.
 
 ```js
 // script.js
 
-// добавление таблицы на страницу
-gridView.render(gridViewConfig); // передаем конфигурацию табицы в качестве параметра в метод .render()
+// add table to document
+gridView.render(gridViewConfig); // use configuration object as argument to .render() method
 ```
 
-Также, для таблицы потребуются входящие данные, которые будут в ней отображаться. Расположите их до создания объекта.
+Also, you need input data for table. Write it before you create table object.
 
 ```js
 // script.js
 
-// входящие данные для таблицы
+// input data for table
 const dataExample = [{
-    // перечень данных для одной строки
+    // list of columns for one row
   },
   {
-    // перечень данных для одной строки
+    // list of columns for one row
   },
-    // и т.д.
+    // etc.
 ];
 ```
 
-#### Входящие данные
-[Вернуться к содержанию][toc]
+### Input data
+[Back to content][toc]
 
-Входящие данные должны быть представлены массивом объектов, где каждый объект - это данные одной строки будущей таблицы. Ключ объекта - название столбца, значение - данные ячейки. Количество столбцов неограничено. Ключ объекта должен совпадать с настройками атрибутов (названиями столбцов) (см. раздел [Конфигурация таблицы](#конфигурация-таблицы)).
+Input data should be presented as array of objects, where each object it's a data for one row. Key of object is a column name, value - cell value in this column. Number of columns is infinite. Key of object must be the same as name in attribute (column name) (see [Table configuration](#table-configuration) section).
 
 ```js
 // script.js
 
-// пример входящих данных с двумя строками будущей таблицы (не считая строки-заголовка)
+// input data example with two rows (without row of columns header).
 const dataExample = [{
     company: 'Masters Co. <b>Unlimited</b>',
     chef: 'John Ford',
@@ -110,17 +113,17 @@ const dataExample = [{
 ];
 ```
 
-Как видно в примере, в первой ячейке первой строки столбца "company" есть html-тег. В настройках атрибутов таблицы будет опция, которая указывает показать такой текст как есть или преобразовать в html-тег. Подбробнее об этом в разделе [Конфигурация таблицы](#конфигурация-таблицы).
+As you can see, in first cell of first row of "company" column there is a html tag. In configuration of attributes there will be an option, which set how html tags should be displayed: like a plain text or like html tag. Check [Table configuration](#table-configuration) section for more information.
 
-#### Конфигурация таблицы
-[Вернуться к содержанию][toc]
+### Table configuration
+[Back to content][toc]
 
-Конфигурация таблицы необходима для задания настроек отображения таблицы, передачи входящих данных и настройки столбцов таблицы.
+Table configuration needed for setting table styles, input data and columns.
 
 ```js
 // script.js
 
-// пример установки необходимых параметров
+// example of setting basic parameters
 const gridViewConfig = {
   parent: '.gridview-container',
   titleTag: 'h1',
@@ -149,84 +152,84 @@ const gridViewConfig = {
 };
 ```
 
-Подробнее про каждый параметр и его особенности.
+More about all of them.
 
-**parent**
+**parent** {string}
 
-В данном параметре вы указываете элемент, в который нужно поместить таблицу, т.е. родителя таблицы. По умолчанию это тег `<body>`. Возможен выбор по тегу, классу или идентификатору элемента.
+Here you set in which element your table will be added. `<body>` is default. You can select element by tag, class or id.
 
 ```js
-// выбор первого на странице элемента div
+// select first div element in document
 parent: 'div',
 
-// ...или выбор по css классу
+// ...or select by css class
 parent: '.gridview-container',
 
-// ...или выбор по идентификатору
+// ...or select by id
 parent: '#gridview-container',
 ```
 
-**titleTag**
+**titleTag** {string}
 
-В данном параметре вы указываете тег для названия таблицы. По умолчанию это тег `<h2>`. Если вам не нужно создавать название таблицы, укажите `false` в качестве значения для данного параметра.
+Here you set html tag for table title. `<h2>` is default. If you don't need table title, set it to `false`.
 
 ```js
-// выбор тега h1, например, для названия таблицы
+// set h1 tag for example
 titleTag: 'h1',
 
-// ... или указание, что название не нужно создавать
+// ...or set it to false if you don't need title
 titleTag: false,
 ```
 
-**titleText**
+**titleText** {string}
 
-В данном параметре вы указываете само название таблицы - текст, который будет отображаться. По умолчанию задано название `GridView table title`.
+Here you set text for table title. `GridView table title` is default.
 
 ```js
-// пример названия таблицы
+// text for title for example
 titleText: 'GridView title example',
 ```
 
-**titleClass**
+**titleClass** {array}
 
-В данном параметре вы указываете перечень классов css, которые нужно присвоить для названия. По умолчанию ни одного класса не задано. Данный параметр принимает на вход массив классов.
+Here you set css classes for table title. No classes set by defaule.
 
 ```js
-// названию таблицы будет добавлен один класс header
+// add class 'header' for table title
 titleClass: ['header'],
 ```
 
-**tableClass**
+**tableClass** {array}
 
-В данном параметре вы указываете перечень классов css, которые нужно присвоить таблице. По умолчанию ни одного класса не задано. Данный параметр принимает на вход массив классов, аналогично `titleClass`.
+Here you set css classes for table. No classes set by default.
 
 ```js
-// таблице будет добавлен один класс table-class
+// class 'table-class' will be added
 tableClass: ['table-class'],
 ```
 
-**attribute**
+**attribute** {object}
 
-В данном параметре вы настраиваете столбцы таблицы. Данный параметр принимает на вход объект, в котором ключи - названия столбцов, которые должны совпадать с ключами объекта входящих данных (см. раздел [Входящие данные](#входящие-данные)). Значения ключей - объект с настройками столбцов.
+Here you set columns configuration. This parameter takes an object in wich key is a column name and value is another object with columns configuration. Names of columns should be the same as keys of input data (see [Input data](#input-data) section).
 
-`label` отвечает за название столбца - что будет написано в ячейке в строке-заголовке таблицы, принимает строку.
+`label` sets text in cell in column header, it sets the name of column.
 
-`html` отвечает за отображение тегов html. Установите `true`, если нужно в ячейках столбца отображать html элементы при их наличии. Установить `false`, если нужен текст как есть.
+`html` sets how html tags should be displayed. Set it `true` if you need to use html tags in cells. Or set it `false` if you need plain text.
 
-`value` отвечает за обработку ячеек. Здесь указана функция, которая принимает в качестве параметра объект из входящих данных (т.е. целую строку таблицы) и выполняет над ней заданные действия.
+`value` sets handler function. This function takes an object (e.g. a whole row) from input data as argument and do something with this row.
 
 ```js
 attribute: {
-    'company': { // название столбца совпадает с ключом объекта из входящих данных
-      'label': 'Company', // текст, который будет в ячейке в строке-заголовке таблицы
-      'html': true, // в той ячейке, где есть html теги, последние будут отображаться
+    'company': { // name of column should be the same as the key of object from input data
+      'label': 'Company', // text of column header
+      'html': true, // if you have html tags in cell value they will be displayed as html, not like plain text
     },
-    'chef': { // название столбца совпадает с ключом объекта из входящих данных
-      'label': 'Chef', // текст, который будет в ячейке в строке-заголовке таблицы
+    'chef': { // name of column should be the same as the key of object from input data
+      'label': 'Chef', // text of column header
     },
-    'country': { // название столбца совпадает с ключом объекта из входящих данных
-      'label': 'Country', // текст, который будет в ячейке в строке-заголовке таблицы
-      'value': (rowArr) => { // функция, обрабатывающая значение ячейки каждой строки данного столбца
+    'country': { // name of column should be the same as the key of object from input data
+      'label': 'Country', // text of column header
+      'value': (rowArr) => { // handle function
         if (rowArr.country === 'German') {
           return rowArr.country + ' map';
         }
@@ -236,24 +239,24 @@ attribute: {
   },
 ```
 
-В примере выше параметр `rowArr` - это объект из константы `dataExample` (из набора входящих данных).
+In the example above argumen `rowArr` is the object from const `dataExample` (from input data array).
 
-**data**
+**data** {array}
 
-В данном параметре вы указываете массив входящих данных. Принимает на вход объект массив объектов.
+Here you set array of input data. Array contains objects.
 
 ```js
-// указание на ранее созданный массив данных
+// link for array created earlier
 data: dataExample
 ```
 
-### Пример использования
-[Вернуться к содержанию][toc]
+## Example of use
+[Back to content][toc]
 
 ```js
 // script.js
 
-// создаем массив входящих данных
+// create array of input data
 const dataExample = [{
     company: 'Masters Co. <b>Unlimited</b>',
     chef: 'John Ford',
@@ -276,10 +279,10 @@ const dataExample = [{
   }
 ];
 
-// создаем объект
+// create object
 let gridView = new GridView();
 
-// настраиваем таблицу
+// set table configuration
 const gridViewConfig = {
   parent: '.gridview-container',
   titleTag: 'h1',
@@ -307,7 +310,7 @@ const gridViewConfig = {
   data: dataExample
 };
 
-// выводим таблицу на страницу
+// add table to document
 gridView.render(gridViewConfig);
 ```
 
@@ -347,20 +350,20 @@ table th {
 }
 ```
 
-Результат выполнения:
+Result:
 
 ![GridView example](https://evoe.dev/images/gridview.js/example.png)
 
-### Обновления
-[Вернуться к содержанию][toc]
+## Update
+[Back to content][toc]
 
-Текущая версия 0.1.
-Обновлений нет.
+Current version 0.1.
+There is no update yet.
 
-### Лицензия
-[Вернуться к содержанию][toc]
+## License
+[Back to content][toc]
 
-Лицензия MIT.
+MIT.
 
 <!-- Ссылки -->
-[toc]: #содержание
+[toc]: #content
