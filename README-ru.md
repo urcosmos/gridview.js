@@ -352,7 +352,7 @@ table th {
 
 Результат выполнения:
 
-![GridView example](https://evoe.dev/images/gridview.js/example.png)
+![GridView example](https://evoe.dev/projects/gridview.js/example.png)
 
 ## Обновления
 [Вернуться к содержанию][toc]

@@ -352,7 +352,7 @@ table th {
 
 Result:
 
-![GridView example](https://evoe.dev/images/gridview.js/example.png)
+![GridView example](https://evoe.dev/projects/gridview.js/example.png)
 
 ## Update
 [Back to content][toc]
